@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satwika | Portfolio</title>
+  <style>
+    :root {
+      --bg-1: #f7efff;
+      --bg-2: #eef6ff;
+      --bg-3: #fff8ef;
+      --text: #1f2430;
+      --muted: #5f6777;
+      --card: rgba(255,255,255,0.72);
+      --border: rgba(255,255,255,0.55);
+      --shadow: 0 20px 50px rgba(59, 37, 111, 0.12);
+      --accent: #7b61ff;
+      --accent-2: #ff7ab6;
+      --accent-3: #35b7ff;
+      --maxw: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(123,97,255,0.17), transparent 25%),
+        radial-gradient(circle at 88% 16%, rgba(255,122,182,0.18), transparent 22%),
+        radial-gradient(circle at 78% 78%, rgba(53,183,255,0.17), transparent 22%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 50%, var(--bg-3));
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 14px;
+      z-index: 100;
+      margin: 0 auto 24px;
+      max-width: calc(var(--maxw) - 40px);
+      backdrop-filter: blur(18px);
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 10px 30px rgba(30, 22, 72, 0.08);
+      border-radius: 999px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .brand span { color: var(--accent); }
+
+    .navlinks {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .navlinks a:hover { color: var(--accent); }
+
+    .hero {
+      min-height: calc(100vh - 120px);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 30px 0 24px;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-left {
+      padding: 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.7);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 6px rgba(123,97,255,0.08);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 74px);
+      line-height: 0.98;
+      letter-spacing: -2px;
+    }
+
+    .gradient {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      margin: 18px 0 0;
+      max-width: 720px;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      border: 0;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 12px 25px rgba(123,97,255,0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.8);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.75);
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(255,255,255,0.75);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .hero-right {
+      padding: 24px;
+      display: grid;
+      place-items: center;
+      min-height: 480px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(1px);
+      opacity: 0.55;
+    }
+
+    .orb.one {
+      width: 180px; height: 180px;
+      background: linear-gradient(135deg, rgba(123,97,255,.35), rgba(53,183,255,.22));
+      top: 28px; right: 28px;
+    }
+    .orb.two {
+      width: 130px; height: 130px;
+      background: linear-gradient(135deg, rgba(255,122,182,.35), rgba(255,209,102,.18));
+      left: 20px; bottom: 34px;
+    }
+
+    .portrait {
+      width: min(340px, 82%);
+      aspect-ratio: 1/1;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.75));
+      border: 1px solid rgba(255,255,255,0.85);
+      box-shadow: 0 24px 50px rgba(36, 24, 82, 0.12);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portrait::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(123,97,255,.08), rgba(255,122,182,.08), rgba(53,183,255,.1));
+    }
+
+    .avatar {
+      position: relative;
+      font-size: 112px;
+    }
+
+    .section {
+      padding: 24px 0 10px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3vw, 40px);
+      letter-spacing: -1px;
+      margin: 0 0 18px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 760px;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card {
+      padding: 26px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .skill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .skill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.8);
+      font-size: 14px;
+      font-weight: 700;
+      color: #4b5160;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project {
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project::after {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(123,97,255,.12), rgba(255,122,182,.1));
+    }
+
+    .tagrow {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 14px 0 18px;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.8);
+      color: #586073;
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-transform: uppercase;
+    }
+
+    .project h3 {
+      font-size: 22px;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .project p {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 12px 0 0;
+    }
+
+    .project a {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin-top: 18px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .footer {
+      padding: 40px 0 70px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 940px) {
+      .hero,
+      .grid-2,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-left,
+      .hero-right,
+      .card,
+      .project {
+        padding: 24px;
+      }
+
+      .nav {
+        border-radius: 24px;
+      }
+
+      .navlinks {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav {
+        justify-content: center;
+      }
+
+      .brand {
+        display: none;
+      }
+
+      .shell { padding: 14px; }
+      .hero { min-height: auto; }
+      .hero-left { padding: 22px; }
+      .hero-right { min-height: 320px; }
+      .portrait { width: 220px; border-radius: 24px; }
+      .avatar { font-size: 82px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="brand">Satwika<span>.</span></div>
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <main class="shell">
+    <section class="hero" id="home">
+      <div class="glass hero-left">
+        <div class="eyebrow"><span class="dot"></span> Business Analytics Portfolio</div>
+        <h1>Hi, I'm <span class="gradient">Satwika</span></h1>
+        <p class="subtitle">
+          Master’s student in Business Analytics building projects in SQL, machine learning,
+          NLP, data warehousing, and applied analytics.
+        </p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://github.com/satwikacandy012-tech" target="_blank" rel="noreferrer">View GitHub</a>
+          <a class="btn btn-secondary" href="#projects">Explore Projects</a>
+        </div>
+        <div class="socials">
+          <a class="chip" href="https://github.com/satwikacandy012-tech" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="chip" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="chip" href="mailto:youremail@example.com">Email</a>
+        </div>
+      </div>
+
+      <div class="glass hero-right">
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+        <div class="portrait">
+          <div class="avatar">👩🏻‍💻</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-copy">
+        I enjoy turning messy data into clear insights. My work so far includes text analytics,
+        SQL-based analysis, dimensional modeling, and machine learning projects on structured
+        real-world datasets.
+      </p>
+
+      <div class="grid-2">
+        <div class="glass card">
+          <h3>What I Work With</h3>
+          <div class="skill-grid">
+            <span class="skill">Python</span>
+            <span class="skill">SQL</span>
+            <span class="skill">Machine Learning</span>
+            <span class="skill">NLP</span>
+            <span class="skill">BigQuery</span>
+            <span class="skill">Data Warehousing</span>
+            <span class="skill">Power BI</span>
+            <span class="skill">Tableau</span>
+          </div>
+        </div>
+
+        <div class="glass card">
+          <h3>What I Care About</h3>
+          <div class="list">
+            <div>Building clean, useful analytics projects</div>
+            <div>Explaining technical work in a clear business way</div>
+            <div>Using data to support better decisions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="glass card">
+        <h3>Adelphi University</h3>
+        <p class="section-copy" style="margin: 8px 0 0; max-width: none;">
+          Master’s in Business Analytics<br>
+          Expected Graduation: May 2026
+        </p>
+        <div class="tagrow">
+          <span class="tag">Database Management Systems</span>
+          <span class="tag">Statistical Methods</span>
+          <span class="tag">Advanced Business Analytics</span>
+          <span class="tag">Optimization</span>
+          <span class="tag">Text Analytics</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-copy">
+        A few projects that show how I work across analytics, SQL, machine learning, and NLP.
+      </p>
+
+      <div class="projects">
+        <article class="glass project">
+          <h3>Text Analytics on U.S. Labor Market Reports</h3>
+          <div class="tagrow">
+            <span class="tag">Python</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Sentiment Analysis</span>
+          </div>
+          <p>
+            Used preprocessing, tokenization, and sentiment analysis to study language patterns in BLS reports and connect them to labor market trends.
+          </p>
+          <a href="https://github.com/satwikacandy012-tech/data-analytics-projects" target="_blank" rel="noreferrer">View Project →</a>
+        </article>
+
+        <article class="glass project">
+          <h3>Data Warehouse & BigQuery Analysis</h3>
+          <div class="tagrow">
+            <span class="tag">SQL</span>
+            <span class="tag">BigQuery</span>
+            <span class="tag">Star Schema</span>
+          </div>
+          <p>
+            Worked with fact and dimension tables, dimensional modeling, and SQL analysis on structured attendance data to surface patterns and relationships.
+          </p>
+          <a href="https://github.com/satwikacandy012-tech/data-analytics-projects" target="_blank" rel="noreferrer">View Project →</a>
+        </article>
+
+        <article class="glass project">
+          <h3>NYC Taxi Machine Learning Analysis</h3>
+          <div class="tagrow">
+            <span class="tag">ML</span>
+            <span class="tag">Python</span>
+            <span class="tag">Prediction</span>
+          </div>
+          <p>
+            Built predictive models on structured data, evaluated performance, and generated outputs using applied machine learning workflow in Python.
+          </p>
+          <a href="https://github.com/satwikacandy012-tech/data-analytics-projects" target="_blank" rel="noreferrer">View Project →</a>
+        </article>
+
+        <article class="glass project">
+          <h3>Sales Data Analysis using SQL</h3>
+          <div class="tagrow">
+            <span class="tag">SQL</span>
+            <span class="tag">Business Analysis</span>
+            <span class="tag">Reporting</span>
+          </div>
+          <p>
+            Queried sales data to identify revenue trends, top products, and regional performance, with a focus on answering practical business questions.
+          </p>
+          <a href="https://github.com/satwikacandy012-tech/data-analytics-projects" target="_blank" rel="noreferrer">View Project →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="glass card">
+        <p class="section-copy" style="margin-bottom: 12px; max-width: none;">
+          I’m open to internships and early-career analytics roles.
+        </p>
+        <div class="socials">
+          <a class="chip" href="mailto:youremail@example.com">youremail@example.com</a>
+          <a class="chip" href="https://github.com/satwikacandy012-tech" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="chip" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© 2026 Satwika. Built with GitHub Pages.</div>
+  </main>
+</body>
+</html>
